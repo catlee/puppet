@@ -28,7 +28,7 @@ class vnc {
             }
         }
         CentOS: {
-            include packages::vnc
+            include packages::x11vnc
             # TODO: Run it on :0...with supervisord?
         }
         default: {
