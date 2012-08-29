@@ -4,7 +4,7 @@ include dirs::usr::local::bin
 include users::root
 
 case $::operatingsystem {
-    Darwin {
+    Darwin: {
         if (!$puppetizing) {
                 exec {
                         "set-background-image" :
