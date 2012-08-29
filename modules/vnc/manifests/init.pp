@@ -27,6 +27,10 @@ class vnc {
                  refreshonly => true;         
             }
         }
+        CentOS: {
+            include packages::vnc
+            # TODO: Run it on :0...with supervisord?
+        }
         default: {
             fail("Cannot set up VNC on this platform")
         }
