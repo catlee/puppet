@@ -3,7 +3,7 @@ class vnc::appearance {
 include dirs::usr::local::bin
 include users::root
 
-case ::$operatingsystem {
+case $::operatingsystem {
     Darwin {
         if (!$puppetizing) {
                 exec {
