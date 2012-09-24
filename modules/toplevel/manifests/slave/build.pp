@@ -16,6 +16,8 @@ class toplevel::slave::build inherits toplevel::slave {
     include packages::mozilla::git
     include packages::mozilla::py27_virtualenv
 
+    include hgtool
+
     ccache::ccache_dir {
         "/builds/ccache":
             maxsize => "10G",
