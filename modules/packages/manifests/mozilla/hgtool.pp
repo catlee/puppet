@@ -1,4 +1,4 @@
-class hgtool {
+class packages::mozilla::hgtool {
     case $::operatingsystem {
         Darwin,CentOS: {
             file  {
