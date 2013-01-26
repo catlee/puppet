@@ -1,0 +1,13 @@
+#!/bin/bash
+# Delete old directories
+set -e
+# Run in a tmpdir so we don't try and delete ourselves
+# purge_builds.py will try and delete stuff under the current directory if it
+# can't free up enough space by deleting other build directories
+tmpdir=$(mktemp -d)
+trap "rm -rf $tmpdir" EXIT
+cd $tmpdir
+if [ -d /builds/hg-shared ]; then
+    export HG_SHARE_BASE_DIR=/builds/hg-shared
+fi
+exec python /tools/build-tools/buildfarm/maintenance/purge_builds.py -s 15 --max-age=14 -n 'rel-*' -n info /builds/slave

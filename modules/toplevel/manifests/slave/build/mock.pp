@@ -6,6 +6,9 @@ class toplevel::slave::build::mock inherits toplevel::slave::build {
     include mockbuild
     include users::builder
 
+    include preflight::steps::tools
+    include preflight::steps::purge
+
     # Add builder_username to the mock_mozilla group, so that it can use the
     # utility.  This could be done via the User resource type, but there's no
     # good way to communicate the need to that class.

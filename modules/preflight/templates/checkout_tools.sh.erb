@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+localdir=/tools/build-tools
+if [ -d $localdir/.hg ]; then
+    sudo -u cltbld hg pull -u -R $localdir
+else
+    rm -rf $localdir
+    sudo -u cltbld hg clone https://hg.mozilla.org/build/tools $localdir
+fi
+chown -R cltbld:cltbld $localdir

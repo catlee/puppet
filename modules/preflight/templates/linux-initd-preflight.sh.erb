@@ -1,0 +1,70 @@
+#! /bin/bash
+#  initscript for preflight
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# chkconfig: 2345 40 08
+### BEGIN INIT INFO
+# Provides:          preflight
+# Required-Start:    $local_fs $network puppet
+# Should-Start:      $remote_fs
+# Should-Stop:       $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      K 0 1 6
+# Short-Description: preflight
+# Description:       preflight
+### END INIT INFO
+
+# MOZILLA DEPLOYMENT NOTES
+# - This file is distributed by Puppet to all linux build servers
+# - it lives in the 'preflight' puppet module
+
+# Required-Stop:     $local_fs
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DESC="preflight"
+
+. /etc/init.d/functions
+
+do_start () {
+    /usr/local/bin/preflight.sh
+}
+
+do_stop () {
+    echo "there is no stop. there is only start"
+    return 1
+}
+
+do_reload () {
+    do_stop
+}
+
+do_restart () {
+    do_stop
+}
+
+case "$1" in
+  start)
+        do_start
+        exit $?
+        ;;
+  stop)
+        do_stop
+        exit $?
+        ;;
+  reload)
+        do_reload
+        exit $?
+        ;;
+  restart|force-reload)
+        do_restart
+        exit $?
+        ;;
+  *)
+        log_warning_msg "Usage: $0 {start|stop|restart|reload|force-reload}"
+        exit 1
+        ;;
+esac
+
+exit 0
