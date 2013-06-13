@@ -1,5 +1,8 @@
 # The preflight module is for running things at boot
 # If they fail, then the machine should alert and reboot and try again
+# TODO: don't always reboot
+# TODO: prevent buildbot from starting (write state to /var/run/preflight.status?)
+# TODO: alert on failure
 class preflight {
     include preflight::startup
     case $::operatingsystem {
