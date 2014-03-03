@@ -14,14 +14,14 @@ class instance_metadata {
                     owner  => "root",
                     mode   => 0755,
                     source => "puppet:///modules/instance_metadata/instance_metadata.py";
-
             }
 
             cron {
-                require => File["/usr/local/bin/instance_metadata.py"],
-                user    => root,
-                command => "$python /usr/local/bin/instance_metadata.py -o /etc/instance_metadata.json",
-                special => "reboot";
+                "get_instance_metadata":
+                    require => File["/usr/local/bin/instance_metadata.py"],
+                    user    => root,
+                    command => "$python /usr/local/bin/instance_metadata.py -o /etc/instance_metadata.json",
+                    special => "reboot";
             }
         }
         default: {
