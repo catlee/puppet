@@ -16,21 +16,20 @@ class instance_metadata {
                     source => "puppet:///modules/instance_metadata/instance_metadata.py";
             }
 
-            cron {
+            exec {
                 "get_instance_metadata":
                     require => File["/usr/local/bin/instance_metadata.py"],
                     user    => root,
-                    command => "$python /usr/local/bin/instance_metadata.py -o /etc/instance_metadata.json",
-                    special => "reboot";
+                    command => "$python /usr/local/bin/instance_metadata.py -o /etc/instance_metadata.json";
             }
         }
         default: {
             # Non-AWS machines should have empty metadata
             file {
                 "/etc/instance_metadata.json":
-                    owner    => root,
-                    mode     => 0644,
-                    contents => "{}";
+                    owner   => root,
+                    mode    => 0644,
+                    content => "{}";
             }
         }
     }
