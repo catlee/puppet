@@ -30,8 +30,8 @@ class instance_metadata {
                 Ubuntu, CentOS: {
                     file {
                         "/etc/init.d/instance_metadata":
-                            reuqire => File["/usr/local/bin/instance_metadata.py"],
-                            content => "puppet:///modules/instance_metadata/instance_metadata.initd",
+                            require => File["/usr/local/bin/instance_metadata.py"],
+                            source  => "puppet:///modules/instance_metadata/instance_metadata.initd",
                             mode    => 0755,
                             owner   => "root",
                             notify  => Service["instance_metadata"];
@@ -47,7 +47,7 @@ class instance_metadata {
                     }
                 }
                 default: {
-                    fail("instance_metadata is not supported on $::operatingsystem");
+                    fail("instance_metadata is not supported on $::operatingsystem")
                 }
             }
         }
