@@ -27,7 +27,7 @@ DESC="instance_metadata"
 
 CMD=/usr/local/bin/instance_metadata.py
 OUTPUT=/etc/instance_metadata.json
-PYTHON=/tools/python27/bin/python
+PYTHON=<%= scope.lookupvar('::packages::mozilla::python27::python') %>
 
 test -x ${CMD} || exit 0
 
