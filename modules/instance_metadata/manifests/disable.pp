@@ -1,4 +1,4 @@
-class instance_metadata::diable {
+class instance_metadata::disable {
     file {
         "/etc/init.d/instance_metadata":
             ensure => absent;
@@ -9,6 +9,7 @@ class instance_metadata::diable {
     }
     service {
         "instance_metadata":
-            ensure => absent;
+            ensure => stopped,
+            enable => false;
     }
 }
