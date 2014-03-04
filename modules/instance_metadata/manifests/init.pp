@@ -31,7 +31,7 @@ class instance_metadata {
                     file {
                         "/etc/init.d/instance_metadata":
                             require => File["/usr/local/bin/instance_metadata.py"],
-                            source  => template("instance_metadata/instance_metadata.initd.erb"),
+                            content => template("instance_metadata/instance_metadata.initd.erb"),
                             mode    => 0755,
                             owner   => "root",
                             notify  => Service["instance_metadata"];
