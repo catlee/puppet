@@ -16,11 +16,39 @@ class instance_metadata {
                     source => "puppet:///modules/instance_metadata/instance_metadata.py";
             }
 
+            # Run this from exec so that we get it at least once when puppet runs the first time.
             exec {
                 "get_instance_metadata":
                     require => File["/usr/local/bin/instance_metadata.py"],
-                    user    => root,
+                    creates => "/etc/instance_metadata.json",
+                    user    => "root",
                     command => "$python /usr/local/bin/instance_metadata.py -o /etc/instance_metadata.json";
+            }
+
+            # On Linux systems, run from init.d on boot
+            case $::operatingsystem {
+                Ubuntu, CentOS: {
+                    file {
+                        "/etc/init.d/instance_metadata":
+                            reuqire => File["/usr/local/bin/instance_metadata.py"],
+                            content => "puppet:///modules/instance_metadata/instance_metadata.initd",
+                            mode    => 0755,
+                            owner   => "root"
+                            notify  => Service["instance_metadata"];
+                    }
+                    service {
+                        "instance_metadata":
+                            require => [
+                                File["/etc/init.d/instance_metadata"],
+                                File["/usr/local/bin/instance_metadata.py"],
+                            ],
+                            hasstatus => false,
+                            enable    => true;
+                    }
+                }
+                default: {
+                    fail("instance_metadata is not supported on $::operatingsystem");
+                }
             }
         }
         default: {
