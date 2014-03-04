@@ -6,8 +6,6 @@ class instance_metadata {
     case $::fqdn {
         /.*\.releng\.(use1|usw2)\.mozilla\.com$/: {
             # AWS machines should fetch instance metadata and dump it in /etc/instance_metadata.json
-            # We should also submit information about the instance to diamond
-            include instance_metadata::diamond
             include packages::mozilla::py27_mercurial
             $python = $::packages::mozilla::python27::python
 
