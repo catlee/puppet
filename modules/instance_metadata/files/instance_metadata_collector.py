@@ -27,10 +27,10 @@ def instance_type_to_int(instance_type):
 
         Both components default to 0 if not found
 
-        Returns (instance_class * 8) + instance_size
+        Returns (instance_class << 8) + instance_size
     """
     class_, size = instance_type.split(".")
-    return (instance_class.get(class_, 0) * 8) + instance_size.get(size, 0)
+    return (instance_class.get(class_, 0) << 8) + instance_size.get(size, 0)
 
 
 class InstanceMetadataCollector(diamond.collector.Collector):
