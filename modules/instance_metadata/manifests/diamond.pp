@@ -15,8 +15,8 @@ class instance_metadata::diamond {
             owner  => "root",
             mode   => 0755;
 
-        "/etc/diamond/collectors/instance_metadata.conf":
-            source => "puppet:///modules/instance_metadata/instance_metadata_diamond.conf",
+        "/etc/diamond/collectors/InstanceMetadataCollector.conf":
+            source => "puppet:///modules/instance_metadata/InstanceMetadataCollector.conf",
             owner  => "root",
             mode   => 0755;
     }
