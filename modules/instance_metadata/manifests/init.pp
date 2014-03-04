@@ -33,7 +33,7 @@ class instance_metadata {
                             reuqire => File["/usr/local/bin/instance_metadata.py"],
                             content => "puppet:///modules/instance_metadata/instance_metadata.initd",
                             mode    => 0755,
-                            owner   => "root"
+                            owner   => "root",
                             notify  => Service["instance_metadata"];
                     }
                     service {
