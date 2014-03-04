@@ -5,6 +5,7 @@
 # Enables submission of instance metadata to graphite via diamond
 class instance_metadata::diamond {
     include diamond
+    include instance_metadata
     file {
         "/usr/share/diamond/collectors/instance_metadata":
             ensure => directory,

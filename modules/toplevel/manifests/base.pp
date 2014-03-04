@@ -31,7 +31,6 @@ class toplevel::base {
     include web_proxy
     include collectd
     include instance_metadata
-    include instance_metadata::diamond
 
     if ($::operatingsystem != Windows) {
         include packages::editors
