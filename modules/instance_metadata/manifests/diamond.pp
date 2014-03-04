@@ -6,6 +6,10 @@
 class instance_metadata::diamond {
     include diamond
     file {
+        "/usr/share/diamond/collectors/instance_metadata":
+            ensure => directory,
+            owner  => "root";
+
         "/usr/share/diamond/collectors/instance_metadata/instance_metadata.py":
             source => "puppet:///modules/instance_metadata/instance_metadata_collector.py",
             owner  => "root",
