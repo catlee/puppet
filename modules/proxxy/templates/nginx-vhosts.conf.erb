@@ -56,7 +56,7 @@ server {
     <% end %>
     <% if params.has_key?('proxy_redirect') -%>
       <% params['proxy_redirect'].each do |redir| %>
-         proxy_redirect <%= redir %>
+         proxy_redirect <%= redir %>;
       <% end %>
     <% end -%>
   }
