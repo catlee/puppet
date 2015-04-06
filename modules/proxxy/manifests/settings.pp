@@ -50,7 +50,7 @@ class proxxy::settings {
         's3-us-west-2.amazonaws.com' => {
             path => 'https://s3-us-west-2.amazonaws.com/',
             size => '16g',
-            ttl => '1d';
+            ttl => '1d',
         },
         'queue.taskcluster.net' => {
             path => 'https://queue.taskcluster.net/',
