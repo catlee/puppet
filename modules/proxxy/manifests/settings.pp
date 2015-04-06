@@ -58,7 +58,7 @@ class proxxy::settings {
             ttl => '1d',
             proxy_redirect => [
                 'https://s3-us-west-2.amazonaws.com/ http://s3-us-west-2.amazonaws.com.$host/',
-            ];
+            ],
         },
     }
 }
