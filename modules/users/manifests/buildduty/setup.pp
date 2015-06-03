@@ -32,6 +32,7 @@ class users::buildduty::setup($home, $username, $group) {
 
     ##
     # Manage some configuration files
+    include mercurial::ext::bundleclone
 
     file {
         "$home/.gitconfig":

@@ -31,6 +31,7 @@ class users::signer::setup($home, $username, $group) {
 
     ##
     # Manage some configuration files
+    include mercurial::ext::bundleclone
 
     file {
         "$home/.hgrc":

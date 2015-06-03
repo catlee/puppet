@@ -11,7 +11,7 @@ class toplevel::slave::releng::build inherits toplevel::slave::releng {
     include dirs::builds::tooltool_cache
 
     include users::builder
-    
+
     if ($::operatingsystem == Windows) {
         include tweaks::vs_2013_lnk
         # Both Releng Windows testers and builders use UltraVNC
@@ -57,4 +57,6 @@ class toplevel::slave::releng::build inherits toplevel::slave::releng {
         'slave_secrets':
             slave_type => 'build';
     }
+
+    include runner::tasks:config_hgrc
 }
