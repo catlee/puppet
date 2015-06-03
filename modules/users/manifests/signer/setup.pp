@@ -37,6 +37,6 @@ class users::signer::setup($home, $username, $group) {
             mode => 0644,
             owner => $username,
             group => $group,
-            source => "puppet:///modules/users/hgrc";
+            content => template("users/hgrc.erb");
     }
 }

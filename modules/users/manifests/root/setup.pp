@@ -38,7 +38,7 @@ class users::root::setup($home, $username, $group) {
         "$home/.hgrc":
             owner => $username,
             group => $group,
-            source => "puppet:///modules/users/hgrc";
+            content => template("users/hgrc.erb");
     }
 
     if ($::operatingsystem == Ubuntu) {

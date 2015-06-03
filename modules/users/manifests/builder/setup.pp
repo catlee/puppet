@@ -49,7 +49,7 @@ class users::builder::setup($home, $username, $group) {
             mode => filemode(0644),
             owner => $username,
             group => $group,
-            source => "puppet:///modules/users/hgrc";
+            content => template("users/hgrc.erb");
         "$home/.vimrc":
             mode => filemode(0644),
             owner => $username,
