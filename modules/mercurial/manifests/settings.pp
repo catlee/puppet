@@ -4,10 +4,17 @@
 class mercurial::settings {
     case $::operatingsystem {
         CentOS, Ubuntu, Darwin: {
-            $hgext_dir = "/usr/local/lib/hgext";
+            $hgext_dir = "/usr/local/lib/hgext"
         }
         default: {
             fail("cannot install on $::operatingsystem")
         }
+    }
+
+    file {
+        $hgext_dir:
+            ensure => directory,
+            owner => root,
+            mode => 0755;
     }
 }
