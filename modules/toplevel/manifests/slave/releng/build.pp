@@ -58,5 +58,5 @@ class toplevel::slave::releng::build inherits toplevel::slave::releng {
             slave_type => 'build';
     }
 
-    include runner::tasks:config_hgrc
+    include runner::tasks::config_hgrc
 }

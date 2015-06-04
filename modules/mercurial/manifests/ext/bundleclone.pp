@@ -6,6 +6,6 @@ class mercurial::ext::bundleclone {
 
     file {
         "$mercurial::settings::hgext_dir/bundleclone.py":
-            source => "puppet://modules/mercurial/bundleclone.py";
+            source => "puppet:///modules/mercurial/bundleclone.py";
     }
 }
