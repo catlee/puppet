@@ -10,11 +10,4 @@ class mercurial::settings {
             fail("cannot install on $::operatingsystem")
         }
     }
-
-    file {
-        $hgext_dir:
-            ensure => directory,
-            owner => root,
-            mode => 0755;
-    }
 }
