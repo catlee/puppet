@@ -5,6 +5,7 @@ class mercurial::settings {
     case $::operatingsystem {
         CentOS, Ubuntu, Darwin: {
             $hgext_dir = "/usr/local/lib/hgext"
+            $hgrc = "/etc/mercurial/hgrc"
         }
         default: {
             fail("cannot install on $::operatingsystem")

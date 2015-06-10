@@ -10,6 +10,14 @@ class packages::mozilla::py27_mercurial {
     }
 
     include packages::mozilla::python27
+    include mercurial::ext::bundleclone
+    include mercurial::settings
+
+    mercurial::hgrc {
+        "$mercurial::settings::hgrc":
+            owner => "root",
+            group => "root";
+    }
 
     case $::operatingsystem {
         CentOS: {

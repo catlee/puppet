@@ -35,6 +35,12 @@ class users::builder::setup($home, $username, $group) {
     # Manage some configuration files
     include mercurial::ext::bundleclone
 
+    mercurial::hgrc {
+        "$home/.hgrc":
+            owner => $username,
+            group => $group;
+    }
+
     file {
         "$home/.gitconfig":
             mode => filemode(0644),
@@ -46,11 +52,6 @@ class users::builder::setup($home, $username, $group) {
             owner => $username,
             group => $group,
             content => template("${module_name}/builder-bashrc.erb");
-        "$home/.hgrc":
-            mode => filemode(0644),
-            owner => $username,
-            group => $group,
-            content => template("users/hgrc.erb");
         "$home/.vimrc":
             mode => filemode(0644),
             owner => $username,

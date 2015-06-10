@@ -33,15 +33,6 @@ class users::root::setup($home, $username, $group) {
 
     ##
     # Manage some configuration files
-    include mercurial::ext::bundleclone
-
-    file {
-        "$home/.hgrc":
-            owner => $username,
-            group => $group,
-            content => template("users/hgrc.erb");
-    }
-
     if ($::operatingsystem == Ubuntu) {
         # patch out /root/.bashrc to not reset $PS1; $PS1 is set in users::global
         file {
