@@ -33,8 +33,6 @@ class users::builder::setup($home, $username, $group) {
 
     ##
     # Manage some configuration files
-    include mercurial::ext::bundleclone
-
     mercurial::hgrc {
         "$home/.hgrc":
             owner => $username,

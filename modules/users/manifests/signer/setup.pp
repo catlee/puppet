@@ -28,16 +28,4 @@ class users::signer::setup($home, $username, $group) {
             authorized_keys => [], # nobody is authorized
             authorized_keys_allows_extras => false;
     } -> Anchor['users::signer::setup::end']
-
-    ##
-    # Manage some configuration files
-    include mercurial::ext::bundleclone
-
-    file {
-        "$home/.hgrc":
-            mode => 0644,
-            owner => $username,
-            group => $group,
-            content => template("users/hgrc.erb");
-    }
 }

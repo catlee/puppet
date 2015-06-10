@@ -32,8 +32,6 @@ class users::buildduty::setup($home, $username, $group) {
 
     ##
     # Manage some configuration files
-    include mercurial::ext::bundleclone
-
     file {
         "$home/.gitconfig":
             mode => 0644,
@@ -45,11 +43,6 @@ class users::buildduty::setup($home, $username, $group) {
             owner => $username,
             group => $group,
             content => template("${module_name}/buildduty-bashrc.erb");
-        "$home/.hgrc":
-            mode => 0644,
-            owner => $username,
-            group => $group,
-            content => template("users/hgrc.erb");
         "$home/.vimrc":
             mode => 0644,
             owner => $username,
