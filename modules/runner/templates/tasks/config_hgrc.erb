@@ -9,6 +9,6 @@ case "$availability_zone" in
     *) PREFERS="ec2region=us-west-2, stream=revlogv1" ;;
 esac
 
-for f in /home/cltbld/.hgrc /etc/mercurial/hgrc; do
+for f in /home/cltbld/.hgrc <%= scope.lookupvar('mercurial::settings::hgrc') %>; do
     sed -i "s/^prefers.*=.*ec2region.*/prefers = ${PREFERS}/" $f
 done
