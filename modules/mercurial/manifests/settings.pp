@@ -6,6 +6,7 @@ class mercurial::settings {
         CentOS, Ubuntu, Darwin: {
             $hgext_dir = "/usr/local/lib/hgext"
             $hgrc = "/etc/mercurial/hgrc"
+            $hgrc_parentdirs = ["/etc/mercurial"]
         }
         default: {
             fail("cannot install on $::operatingsystem")
