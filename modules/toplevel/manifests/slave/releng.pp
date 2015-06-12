@@ -33,6 +33,9 @@ class toplevel::slave::releng inherits toplevel::slave {
         include fw::windows_settings
         include packages::git
     }
+    if ($::operatingsystem == Darwin) {
+        include tweaks::disable_fseventsd
+    }
     case $::kernel {
         'Linux': {
             # authorize aws-manager to reboot instances
