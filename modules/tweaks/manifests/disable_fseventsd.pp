@@ -12,6 +12,6 @@ class tweaks::disable_fseventsd {
             group => admin,
             mode => 0700;
         "/.fseventsd/no_log":
-            contents => "";
+            content => "";
     }
 }
