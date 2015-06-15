@@ -5,12 +5,6 @@
 # Disable OSX finder service
 class tweaks::disable_fseventsd {
     file {
-        "/.fseventsd":
-            ensure => directory,
-            recurse => true,
-            owner => root,
-            group => admin,
-            mode => 0700;
         "/.fseventsd/no_log":
             content => "";
     }
