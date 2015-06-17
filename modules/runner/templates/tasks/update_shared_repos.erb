@@ -18,6 +18,8 @@ if [ "$USER" != "<%= scope.lookupvar('::config::builder_username') %>" ]; then
 fi
 
 <% if scope.lookupvar('::operatingsystem') == 'Darwin' -%>
+# Since we sudo -E above, we can end up with $TMPDIR pointing to a directory
+# that only root can write to
 export TMPDIR=/tmp
 <% end -%>
 
