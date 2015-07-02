@@ -6,7 +6,7 @@
 
 # Make sure we un as root
 if [ "$UID" != "0" ]; then
-        sudo -E -H $0 $*
+        sudo $0 $*
         exit $?
 fi
 
