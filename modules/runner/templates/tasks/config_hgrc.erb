@@ -10,5 +10,7 @@ case "$availability_zone" in
 esac
 
 for f in /home/cltbld/.hgrc <%= scope.lookupvar('mercurial::settings::hgrc') %>; do
-    sed -i "s/^prefers.*=.*ec2region.*/prefers = ${PREFERS}/" $f
+    if [ -f $f ]; then
+        sed -i -e "s/^prefers.*=.*ec2region.*/prefers = ${PREFERS}/" $f
+    fi
 done
