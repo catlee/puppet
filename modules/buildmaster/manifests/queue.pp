@@ -35,6 +35,7 @@ class buildmaster::queue {
     service {
         "command_runner":
             hasstatus => true,
+            subscribe => Python::Virtualenv["${buildmaster::settings::queue_dir}"],
             require => [
                 File["/etc/init.d/command_runner"],
                 Exec["install-tools"],
@@ -43,6 +44,7 @@ class buildmaster::queue {
             ensure => running;
         "pulse_publisher":
             hasstatus => true,
+            subscribe => Python::Virtualenv["${buildmaster::settings::queue_dir}"],
             require => [
                 File["/etc/init.d/pulse_publisher"],
                 File["${buildmaster::settings::queue_dir}/passwords.py"],
