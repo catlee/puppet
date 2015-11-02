@@ -16,7 +16,7 @@
     "balrog_user": "<%= scope.function_secret(["signingworker_balrog_user"]) %>",
     "balrog_password": "<%= scope.function_secret(["signingworker_balrog_password"]) %>",
     "aws_access_key_id": "<%= scope.function_secret(["signingworker_aws_access_key_id"]) %>",
-    "aws_secret_key": "<%= scope.function_secret(["signingworker_aws_secret_key"]) %>",
+    "aws_secret_access_key": "<%= scope.function_secret(["signingworker_aws_secret_access_key"]) %>",
     "destination_bucket": "<%= scope.function_secret(["signingworker_destination_bucket"]) %>",
     "verbose": <%= scope.lookupvar("config::signingworker_verbose_logging") %>
 }
